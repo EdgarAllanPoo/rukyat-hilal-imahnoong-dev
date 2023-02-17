@@ -1,91 +1,40 @@
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from './page.module.css'
-
-const inter = Inter({ subsets: ['latin'] })
+import Image from "next/image";
+import Link from "next/link";
+import SignOut from "@/components/sign-out";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <main className="mx-auto max-w-[1960px] p-4">
+        <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4">
+          <div className="relative mb-5 flex h-[629px] flex-col items-center justify-end gap-4 overflow-hidden border rounded-lg px-6 pb-16 pt-64 text-center after:pointer-events-none after:absolute after:inset-0 after:rounded-lg lg:pt-0">
+            <h1 className="mt-8 mb-4 text-base font-bold uppercase tracking-widest">
+              Imahnoong Hilal Gallery
+            </h1>
+            <p className="max-w-[40ch] sm:max-w-[32ch]">
+              Sistem Informasi Rukyat Hilal.
+            </p>
+            <Link
+              className="pointer z-10 mt-6 rounded-lg border border-white bg-s-green px-3 py-2 text-sm font-semibold text-white transition hover:bg-p-green md:mt-4"
+              href="/form-upload"
+            >
+              Upload
+            </Link>
+            <SignOut />
+          </div>
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
+      </main>
+      <footer className="p-6 text-center sm:p-12">
+        For{" "}
         <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
+          href="https://imahnoong.com/"
           target="_blank"
-          rel="noopener noreferrer"
+          className="font-semibold hover:text-gray-300"
+          rel="noreferrer"
         >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+          Imahnoong
+        </a>{" "}🔭
+      </footer>
+    </>
+  );
 }

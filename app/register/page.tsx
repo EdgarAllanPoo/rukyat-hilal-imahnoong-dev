@@ -1,7 +1,7 @@
 // import Image from "next/image";
 import Form from "@/components/form";
 
-export default function Login() {
+export default function Register() {
   return (
     <div className="flex h-screen w-screen items-center justify-center bg-gray-50">
       <div className="z-10 w-full max-w-md overflow-hidden rounded-2xl border border-gray-100 shadow-xl">
@@ -15,12 +15,12 @@ export default function Login() {
               height={200}
             /> */}
           </a>
-          <h3 className="text-xl font-semibold">Sign In</h3>
+          <h3 className="text-xl font-semibold">Sign Up</h3>
           <p className="text-sm text-gray-500">
-            Use your email and password to sign in
+            Create an account with your email and password
           </p>
         </div>
-        <Form type="login" />
+        <Form type="register" />
       </div>
     </div>
   );

@@ -1,18 +1,26 @@
 import './globals.css'
+import { Inter } from "@next/font/google";
+import Toaster from "@/components/toaster";
+import AuthStatus from "@/components/auth-status";
 
-export default function RootLayout({
+const inter = Inter({
+  subsets: ['latin'],
+  variable: "--font-inter",
+});
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const AuthStatusDiv = await AuthStatus();
   return (
     <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
-      <head />
-      <body>{children}</body>
+      <body className={inter.variable}>
+        <Toaster />
+        {AuthStatusDiv}
+        {children}
+      </body>
     </html>
   )
 }

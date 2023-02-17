@@ -8,15 +8,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'p-green': '#47A920',
-        's-green': '#4FC123',
-        't-green': '#80D261',
-        'p-orange': '#FAC600',
-        's-orange': '#FED402',
-        'p-cream': '#FAE2C0',
-        's-cream': '#FEF1DA',
+        transparent: "transparent",
+        current: "currentColor",
+        "p-green": "#47A920",
+        "s-green": "#4FC123",
+        "t-green": "#80D261",
+        "p-orange": "#FAC600",
+        "s-orange": "#FED402",
+        "p-cream": "#FAE2C0",
+        "s-cream": "#FEF1DA",
       },
     },
   },
   plugins: [],
-}
+};
