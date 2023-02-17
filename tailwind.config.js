@@ -15,7 +15,7 @@ module.exports = {
         's-orange': '#FED402',
         'p-cream': '#FAE2C0',
         's-cream': '#FEF1DA',
-      }
+      },
     },
   },
   plugins: [],
