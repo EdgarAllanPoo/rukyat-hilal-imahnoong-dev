@@ -25,22 +25,29 @@ export default function Form({ type }: { type: "login" | "register" }) {
           }).then(({ ok, error }) => {
             setLoading(false);
             if (ok) {
-              console.log("ok");
               router.push("/form-upload");
             } else {
               toast.error(error);
             }
           });
         } else {
+          const target = e.target as typeof e.target & {
+            name: { value: string };
+            email: { value: string };
+            password: { value: string };
+          };
+          const name = target.name.value;
+          const email = target.email.value;
+          const password = target.password.value;
           fetch("/api/auth/register", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              name: e.currentTarget.name.value,
-              email: e.currentTarget.email.value,
-              password: e.currentTarget.password.value,
+              name: name,
+              email: email,
+              password: password,
             }),
           }).then(async (res) => {
             setLoading(false);
