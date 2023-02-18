@@ -32,13 +32,19 @@ export default function Form({ type }: { type: "login" | "register" }) {
           });
         } else {
           const target = e.target as typeof e.target & {
-            name: { value: string };
-            email: { value: string };
-            password: { value: string };
+            name:           { value: string };
+            email:          { value: string };
+            password:       { value: string };
+            year_of_birth:  { value: number };
+            phone_number:   { value: string };
+            agency_name:    { value: string };
           };
           const name = target.name.value;
           const email = target.email.value;
           const password = target.password.value;
+          const year_of_birth = target.year_of_birth.value;
+          const phone_number = target.phone_number.value;
+          const agency_name = target.agency_name.value;
           fetch("/api/auth/register", {
             method: "POST",
             headers: {
@@ -48,6 +54,9 @@ export default function Form({ type }: { type: "login" | "register" }) {
               name: name,
               email: email,
               password: password,
+              year_of_birth: year_of_birth,
+              phone_number: phone_number,
+              agency_name: agency_name,
             }),
           }).then(async (res) => {
             setLoading(false);
@@ -65,21 +74,72 @@ export default function Form({ type }: { type: "login" | "register" }) {
       className="flex flex-col space-y-4 bg-gray-50 px-4 py-8 sm:px-16"
     >
       {type === "register" && (
-        <div>
-          <label
-            htmlFor="name"
-            className="block text-xs text-gray-600 uppercase"
-          >
-            Full Name
-          </label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            autoComplete="off"
-            required
-            className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
-          />
+        <div className="space-y-4">
+          <div>
+            <label
+              htmlFor="name"
+              className="block text-xs text-gray-600 uppercase"
+              >
+              Full Name
+            </label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              autoComplete="off"
+              required
+              className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
+              />
+          </div>
+          <div>
+            <label
+              htmlFor="year_of_birth"
+              className="block text-xs text-gray-600 uppercase"
+            >
+              Year of Birth
+            </label>
+            <input
+              id="year_of_birth"
+              name="year_of_birth"
+              type="number"
+              min="0"
+              autoComplete="off"
+              required
+              className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="phone_number"
+              className="block text-xs text-gray-600 uppercase"
+            >
+              Phone Number
+            </label>
+            <input
+              id="phone_number"
+              name="phone_number"
+              type="text"
+              autoComplete="off"
+              required
+              className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="agency_name"
+              className="block text-xs text-gray-600 uppercase"
+            >
+              Agency Name
+            </label>
+            <input
+              id="agency_name"
+              name="agency_name"
+              type="text"
+              autoComplete="off"
+              required
+              className="mt-1 block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-black focus:outline-none focus:ring-black sm:text-sm"
+            />
+          </div>
         </div>
       )}
       <div>
