@@ -1,7 +1,12 @@
 import './globals.css'
-import { Inter } from "@next/font/google";
+import { Inter } from "next/font/google";
 import Toaster from "@/components/toaster";
 import AuthStatus from "@/components/auth-status";
+
+export const metadata = {
+  title: 'Rukyat Hilal - Imahnoong',
+  description: 'Sistem Informasi Rukyat Hilal',
+}
 
 const inter = Inter({
   subsets: ['latin'],
