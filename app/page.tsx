@@ -1,8 +1,25 @@
-import Image from "next/image";
+"use client";
+
+// import Image from "next/image";
 import Link from "next/link";
 import SignOut from "@/components/sign-out";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [rukyats, setRukyats] = useState([]);
+  
+  async function getRukyats() {
+    const res = await fetch("/api/rukyat/display-result");
+    const data = await res.json();
+    setRukyats(data);
+    console.log("Data Rukyat: ")
+    console.log(data);
+  }
+
+  useEffect(() => {
+    getRukyats();
+  }, []);
+
   return (
     <>
       <main className="mx-auto max-w-[1960px] p-4">
@@ -22,6 +39,13 @@ export default function Home() {
             </Link>
             <SignOut />
           </div>
+        </div>
+        <div>
+          {rukyats.map(rukyat => (
+            <li key={rukyat.id}>
+              {rukyat.id} | { rukyat.description } | { rukyat.taken_date } | User Name: { rukyat.User.name }
+            </li>
+          ))}
         </div>
       </main>
       <footer className="p-6 text-center sm:p-12">
