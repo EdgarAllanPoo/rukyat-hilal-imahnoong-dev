@@ -4,9 +4,10 @@
 import Link from "next/link";
 import SignOut from "@/components/sign-out";
 import { useState, useEffect } from "react";
+import { Rukyat } from "@/interfaces/rukyat";
 
 export default function Home() {
-  const [rukyats, setRukyats] = useState([]);
+  const [rukyats, setRukyats] = useState<Rukyat[]>([]);
   
   async function getRukyats() {
     const res = await fetch("/api/rukyat/display-result");
