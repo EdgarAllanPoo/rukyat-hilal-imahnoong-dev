@@ -48,11 +48,11 @@ export function AzimuthAltitudeCalculator() {
         const azDeg = azRad * radToDeg;
         const altDeg = altRad * radToDeg;
 
-        if (azimuth - azDeg > 2) {
+        if (azimuth - azDeg > 4) {
             setAzimuth(azDeg);
         }
 
-        if (altitude - altDeg > 2) {
+        if (altitude - altDeg > 4) {
             setAltitude(altDeg);
         }
       }
