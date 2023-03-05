@@ -14,7 +14,7 @@ const FullScreenMobileView = () => {
     }, [imageData])
     
     return(
-        <div style={{display:"flex", flexDirection:"column", justifyContent:"start", alignItems:"flex-start"}}>
+        <div style={{display:"flex", flexDirection:"column", justifyContent:"start", alignItems:"flex-start", overflow:"hidden"}}>
             <div className="VideoAndCanvas">
                 <video width={width} style={{objectFit:'contain'}} />
                 <canvas style={{opacity:0}} />
