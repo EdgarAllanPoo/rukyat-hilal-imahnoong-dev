@@ -2,7 +2,7 @@
 import FullScreenMobileView from "@/components/fullScreenMobileView";
 import {AzimuthAltitudeCalculator} from "@/components/azimuthAltitudeCalculator";
 import { DeviceOrientationChecker } from "@/components/directionOrientationChecker";
-import { moonPosition } from "@/components/moonPosition";
+import { MoonPosition } from "@/components/moonPosition";
 
 export default function FinderBulan() {
   return (
@@ -10,7 +10,7 @@ export default function FinderBulan() {
         <FullScreenMobileView></FullScreenMobileView>
         <AzimuthAltitudeCalculator></AzimuthAltitudeCalculator>
         <DeviceOrientationChecker></DeviceOrientationChecker>
-        <moonPosition></moonPosition>
+        <MoonPosition></MoonPosition>
     </div>
   );
 }

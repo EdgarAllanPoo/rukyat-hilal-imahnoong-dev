@@ -1,6 +1,6 @@
 import { moonposition, sexagesimal, angle } from 'astronomia';
 
-export function moonPosition() {
+export function MoonPosition() {
     const now = new Date();
 
     // Calculate the moon's position
