@@ -1,25 +1,47 @@
-import { moonposition, sexagesimal, angle } from 'astronomia';
+import { useEffect, useState } from 'react';
+import SunCalc from 'suncalc';
 
 export function MoonPosition() {
-    const now = new Date();
+  const now = new Date();
 
-    // Calculate the moon's position
-    const moonPos = moonposition(now);
-    
-    // Get the moon's latitude and longitude
-    const { lat, lon } = moonPos;
-    
-    // Convert the latitude and longitude to sexagesimal notation
-    const latDeg = sexagesimal.strFromDD(lat);
-    const lonDeg = sexagesimal.strFromDD(lon);
-    
-    console.log(`Latitude: ${latDeg}`);
-    console.log(`Longitude: ${lonDeg}`);
+  const [location, setLocation] = useState<{ latitude: number; longitude: number }>();
 
-    return (
+  useEffect(() => {
+    function getCurrentLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            setLocation({
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude,
+            });
+          },
+          (error) => {
+            console.error(error);
+          }
+        );
+      } else {
+        console.error('Geolocation is not supported by this browser.');
+      }
+    }
+
+    getCurrentLocation();
+  }, []);
+
+  const moonPosition = location ? SunCalc.getMoonPosition(now, location.latitude, location.longitude) : null;
+  const azimuth = moonPosition?.azimuth;
+  const altitude = moonPosition?.altitude;
+
+  return (
+    <div>
+      {azimuth && altitude ? (
         <div>
-            <h1>Moon Latitude: {latDeg}°</h1>
-            <h1>Moon Longitude: {lonDeg}°</h1>
+          <h1>Moon Azimuth: {azimuth.toFixed(2)}°</h1>
+          <h1>Moon Altitude: {altitude.toFixed(2)}°</h1>
         </div>
-      );
+      ) : (
+        <div>Loading...</div>
+      )}
+    </div>
+  );
 }
