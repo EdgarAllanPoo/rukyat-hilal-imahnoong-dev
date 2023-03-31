@@ -36,6 +36,7 @@ export function MoonPosition() {
     <div>
       {azimuth && altitude ? (
         <div>
+          <h1>Date: {now.getUTCDate()}</h1>
           <h1>Device Latitude: {location?.latitude.toFixed(2)}</h1>
           <h1>Device Longitude: {location?.longitude.toFixed(2)}</h1>
           <h1>Moon Azimuth: {azimuth.toFixed(2)}°</h1>
